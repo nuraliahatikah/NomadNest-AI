@@ -1,6 +1,12 @@
-# NomadNest AI
+# OpenAI Build Week Submission
 
-NomadNest AI is a hyper-local neighborhood and living simulator for Malaysian locations. It geocodes a target location, finds named nearby OpenStreetMap facilities, and turns the spatial context into a 24-hour livability timeline.
+# NomadNest AI
+Track / Category : Apps for Your Life
+NomadNest AI is an advanced consumer lifestyle utility designed to eliminate the logistical blind spots, spatial anxieties, and hidden friction points associated with selecting a new neighborhood or property location.
+
+Project Description
+NomadNest AI is a fully functional neighborhood lifestyle "digital twin" simulator. Traditional mapping tools provide flat, static locations, leaving relocators to guess about actual traffic density, school-rush gridlocks, or late-night noise corridors. NomadNest AI evaluates any precise real-world coordinate payload using open-source GIS pipelines combined with an asynchronous multi-agent LLM workflow. NomadNest AI is a hyper-local neighborhood and living simulator for Malaysian locations. It geocodes a target location, finds named nearby OpenStreetMap facilities, and turns the spatial context into a 24-hour livability timeline.
+
 
 ## What it does
 
@@ -73,31 +79,15 @@ After a simulation, select **1 KM** or **2 KM** in Section A to filter the displ
 
 ### System Architecture Diagram
 
-```mermaid
-flowchart LR
-	Browser[Browser UI<br/>templates/index.html] <-->|HTTP / WebSocket| API[FastAPI<br/>main.py]
-	Browser -->|Map tiles| Tiles[Leaflet Tiles<br/>CartoDB / OSM]
-	API -->|Geocode| Geocode[Nominatim]
-	API -->|POI lookup| Overpass[Overpass / OSM]
-	API -->|Run personas| Agents[agents.py]
-	Agents -->|Analyze / Prompt| OpenAI[OpenAI GPT-5]
-	API -->|Persist / Read| DB[SQLite<br/>database.py]
-	DB --> Work[work/publish-metadata]
-	click DB "work/publish-metadata" "Local manifest storage"
-	style API fill:#f0f9ff,stroke:#0366d6
-	style Agents fill:#fff7e6,stroke:#d97706
-	style OpenAI fill:#fff0f6,stroke:#db2777
-	classDef external fill:#f3f4f6,stroke:#6b7280,stroke-dasharray: 5 5
-	class Geocode,Overpass,Tiles,OpenAI external
-```
-
-If your viewer doesn't render Mermaid, here's a static image version:
-
 ![System architecture](docs/system_architecture.svg)
 
 ## How Codex accelerated the project
 
 Codex accelerated the implementation by building the complete FastAPI/SQLite/Leaflet stack, wiring the front-end state into the unified simulation response, and repeatedly validating Python and browser-script syntax. It also helped diagnose real execution issues: local server lifecycle, unavailable public geocoder connectivity, empty server-side POI arrays, and stale UI state. The resulting resilience path prevents a failed network dependency from collapsing the entire dashboard.
+
+1. Asynchronous Parallelism: Codex wrote the complex boilerplate required for Python’s asyncio.gather(), letting the application execute parallel multi-agent prompts against the OpenAI SDK without blocking the primary FastAPI execution pipeline.
+
+2. GIS Coordinates Filtering Engine: Codex generated the spatial distance formula calculations that successfully filter the OpenStreetMap named place lists down into categorized proximity metrics (Transit, School, Emergency, Eateries) in real-time.
 
 Key product decisions made during implementation:
 
