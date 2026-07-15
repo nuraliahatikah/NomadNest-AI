@@ -2,9 +2,11 @@
 
 # NomadNest AI
 Track / Category : Apps for Your Life
+
+# What is NomadNest AI ?
 NomadNest AI is an advanced consumer lifestyle utility designed to eliminate the logistical blind spots, spatial anxieties, and hidden friction points associated with selecting a new neighborhood or property location.
 
-Project Description
+# Project Description
 NomadNest AI is a fully functional neighborhood lifestyle "digital twin" simulator. Traditional mapping tools provide flat, static locations, leaving relocators to guess about actual traffic density, school-rush gridlocks, or late-night noise corridors. NomadNest AI evaluates any precise real-world coordinate payload using open-source GIS pipelines combined with an asynchronous multi-agent LLM workflow. NomadNest AI is a hyper-local neighborhood and living simulator for Malaysian locations. It geocodes a target location, finds named nearby OpenStreetMap facilities, and turns the spatial context into a 24-hour livability timeline.
 
 
