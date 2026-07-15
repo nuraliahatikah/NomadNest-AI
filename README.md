@@ -56,7 +56,7 @@ If the OpenAI key is absent, NomadNest AI uses a resilient local persona engine 
 Use any Malaysian address or place name, for example:
 
 - `Iskandar Puteri, Johor`
-- `Ayer Tawar, Perak`
+- `Tapah, Perak`
 - `Shah Alam, Selangor`
 - `Kota Bharu, Kelantan`
 
