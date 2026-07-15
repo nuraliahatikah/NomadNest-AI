@@ -1,0 +1,15 @@
+flowchart LR
+  Browser[Browser UI\ntemplates/index.html] <-->|HTTP / WebSocket| API[FastAPI\nmain.py]
+  Browser -->|Map tiles| Tiles[Leaflet Tiles\nCartoDB / OSM]
+  API -->|Geocode| Geocode[Nominatim]
+  API -->|POI lookup| Overpass[Overpass / OSM]
+  API -->|Run personas| Agents[agents.py]
+  Agents -->|Analyze / Prompt| OpenAI[OpenAI GPT-5]
+  API -->|Persist / Read| DB[SQLite\ndatabase.py]
+  DB --> Work[work/publish-metadata]
+  click DB "work/publish-metadata" "Local manifest storage"
+  style API fill:#f0f9ff,stroke:#0366d6
+  style Agents fill:#fff7e6,stroke:#d97706
+  style OpenAI fill:#fff0f6,stroke:#db2777
+  classDef external fill:#f3f4f6,stroke:#6b7280,stroke-dasharray: 5 5
+  class Geocode,Overpass,Tiles,OpenAI external

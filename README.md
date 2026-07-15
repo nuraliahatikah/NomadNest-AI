@@ -71,6 +71,30 @@ After a simulation, select **1 KM** or **2 KM** in Section A to filter the displ
 5. The two personas run concurrently with `asyncio.gather()` and return precise timeline incidents.
 6. FastAPI merges and stores the result in SQLite, then returns one payload that updates the map, NearBy facilities, timeline, score, and live agent monitor together.
 
+### System Architecture Diagram
+
+```mermaid
+flowchart LR
+	Browser[Browser UI<br/>templates/index.html] <-->|HTTP / WebSocket| API[FastAPI<br/>main.py]
+	Browser -->|Map tiles| Tiles[Leaflet Tiles<br/>CartoDB / OSM]
+	API -->|Geocode| Geocode[Nominatim]
+	API -->|POI lookup| Overpass[Overpass / OSM]
+	API -->|Run personas| Agents[agents.py]
+	Agents -->|Analyze / Prompt| OpenAI[OpenAI GPT-5]
+	API -->|Persist / Read| DB[SQLite<br/>database.py]
+	DB --> Work[work/publish-metadata]
+	click DB "work/publish-metadata" "Local manifest storage"
+	style API fill:#f0f9ff,stroke:#0366d6
+	style Agents fill:#fff7e6,stroke:#d97706
+	style OpenAI fill:#fff0f6,stroke:#db2777
+	classDef external fill:#f3f4f6,stroke:#6b7280,stroke-dasharray: 5 5
+	class Geocode,Overpass,Tiles,OpenAI external
+```
+
+If your viewer doesn't render Mermaid, here's a static image version:
+
+![System architecture](docs/system_architecture.svg)
+
 ## How Codex accelerated the project
 
 Codex accelerated the implementation by building the complete FastAPI/SQLite/Leaflet stack, wiring the front-end state into the unified simulation response, and repeatedly validating Python and browser-script syntax. It also helped diagnose real execution issues: local server lifecycle, unavailable public geocoder connectivity, empty server-side POI arrays, and stale UI state. The resulting resilience path prevents a failed network dependency from collapsing the entire dashboard.

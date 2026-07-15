@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+  <style>
+    .box { fill:#fff; stroke:#111827; stroke-width:1.5; rx:8; }
+    .api { fill:#f0f9ff; stroke:#0366d6; }
+    .agents { fill:#fff7e6; stroke:#d97706; }
+    .openai { fill:#fff0f6; stroke:#db2777; }
+    .external { fill:#f3f4f6; stroke:#6b7280; stroke-dasharray:4 4; }
+    .label { font:14px sans-serif; fill:#111827; }
+    .small { font:12px sans-serif; fill:#374151; }
+  </style>
+
+  <!-- Browser -->
+  <rect x="40" y="40" width="220" height="70" class="box"/>
+  <text x="150" y="65" text-anchor="middle" class="label">Browser UI</text>
+  <text x="150" y="85" text-anchor="middle" class="small">templates/index.html</text>
+
+  <!-- Tiles -->
+  <rect x="40" y="140" width="220" height="60" class="box external"/>
+  <text x="150" y="170" text-anchor="middle" class="label">Leaflet Tiles</text>
+  <text x="150" y="190" text-anchor="middle" class="small">CartoDB / OSM</text>
+
+  <!-- API -->
+  <rect x="380" y="80" width="260" height="100" class="box api"/>
+  <text x="510" y="105" text-anchor="middle" class="label">FastAPI</text>
+  <text x="510" y="125" text-anchor="middle" class="small">main.py</text>
+
+  <!-- Geocode & Overpass -->
+  <rect x="740" y="40" width="200" height="60" class="box external"/>
+  <text x="840" y="62" text-anchor="middle" class="label">Nominatim</text>
+  <rect x="740" y="120" width="200" height="60" class="box external"/>
+  <text x="840" y="142" text-anchor="middle" class="label">Overpass / OSM</text>
+
+  <!-- Agents -->
+  <rect x="380" y="220" width="220" height="80" class="box agents"/>
+  <text x="490" y="255" text-anchor="middle" class="label">agents.py</text>
+  <text x="490" y="275" text-anchor="middle" class="small">Persona engine</text>
+
+  <!-- OpenAI -->
+  <rect x="640" y="220" width="220" height="80" class="box openai external"/>
+  <text x="750" y="255" text-anchor="middle" class="label">OpenAI</text>
+  <text x="750" y="275" text-anchor="middle" class="small">GPT</text>
+
+  <!-- DB -->
+  <rect x="380" y="340" width="220" height="70" class="box"/>
+  <text x="490" y="370" text-anchor="middle" class="label">SQLite</text>
+  <text x="490" y="390" text-anchor="middle" class="small">database.py</text>
+
+  <!-- Work folder -->
+  <rect x="640" y="340" width="220" height="60" class="box"/>
+  <text x="750" y="370" text-anchor="middle" class="small">work/publish-metadata</text>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111827" />
+    </marker>
+  </defs>
+
+  <line x1="260" y1="75" x2="380" y2="95" stroke="#111827" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="320" y="67" class="small">HTTP / WebSocket</text>
+
+  <line x1="150" y1="170" x2="150" y2="140" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
+  <line x1="260" y1="170" x2="380" y2="110" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
+  <text x="320" y="150" class="small">Map tiles</text>
+
+  <line x1="640" y1="80" x2="740" y2="70" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
+  <line x1="640" y1="100" x2="740" y2="100" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
+  <text x="700" y="95" class="small">Geocode / POI lookup</text>
+
+  <line x1="520" y1="180" x2="520" y2="220" stroke="#111827" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="540" y="205" class="small">Run personas</text>
+
+  <line x1="500" y1="260" x2="640" y2="260" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
+  <text x="570" y="250" class="small">Analyze / Prompt</text>
+
+  <line x1="520" y1="300" x2="520" y2="340" stroke="#111827" stroke-width="1.5" marker-end="url(#arrow)" />
+  <text x="540" y="320" class="small">Persist / Read</text>
+
+  <line x1="500" y1="375" x2="640" y2="375" stroke="#111827" stroke-width="1.2" marker-end="url(#arrow)" />
+
+</svg>
