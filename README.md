@@ -95,6 +95,4 @@ The JSON events are schema-checked, merged into a time-sorted 24-hour timeline, 
 
 The public Nominatim service is rate-limited to one request per second and receives an identifying User-Agent. For sustained or commercial production traffic, configure a self-hosted or dedicated Nominatim/Overpass provider. Respect the [Nominatim usage policy](https://operations.osmfoundation.org/policies/nominatim/).
 
-## Feedback 
 
-/feedback 019f5e23-a416-78d2-aa98-0a731dbc57c3
